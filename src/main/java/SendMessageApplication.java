@@ -22,24 +22,5 @@ public class SendMessageApplication {
         Stream.generate(new UserBehaviorCsvFileReader(filePath))
                 .sequential()
                 .forEachOrdered(new KafkaProducer(topic, broker));
-//        Configuration configuration = new Configuration();
-//        configuration.addResource(new Path("../../../core-site.xml"));
-//        configuration.addResource(new Path("../../../hdfs-site.xml"));
-//        FileSystem fileSystem = FileSystem.get(configuration);
-//        try {
-//            Path path = new Path(filePath);
-//            FSDataInputStream fsDataInputStream = fileSystem.open(path);
-//            BufferedReader br = new BufferedReader(new InputStreamReader(fsDataInputStream));
-//            String str;
-//            int count = 0;
-//            while((str = br.readLine())!=null&&count < 20) {
-//                String[] split = str.split(",");
-//                System.out.println(str);
-//                System.out.println(split[2]);
-//                count++;
-//            }
-//        } catch (IOException e) {
-//            throw new IOException("Error reading TaxiRecords from file: " + filePath, e);
-//        }
     }
 }

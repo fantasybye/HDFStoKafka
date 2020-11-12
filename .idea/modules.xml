@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SparkStreaming.iml" filepath="$PROJECT_DIR$/.idea/SparkStreaming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/HDFStoKafka.iml" filepath="$PROJECT_DIR$/.idea/HDFStoKafka.iml" />
     </modules>
   </component>
 </project>
