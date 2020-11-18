@@ -13,11 +13,12 @@ import java.util.stream.Stream;
 public class SendMessageApplication {
     public static void main(String[] args) throws Exception {
         // 文件地址
-        String filePath = "hdfs://mycluster/test/UserBehavior.csv";
+        String filePath = "hdfs://mycluster/weibo/content.csv";
         // kafka topic
-        String topic = "user_behavior";
+        String topic = "weibo_content";
+//        String topic = "user_behavior";
         // kafka borker地址
-        String broker = "172.19.241.121:9092";
+        String broker = "172.19.241.121:9092,172.19.241.133:9092,172.19.241.133:9092";
 
         Stream.generate(new UserBehaviorCsvFileReader(filePath))
                 .sequential()

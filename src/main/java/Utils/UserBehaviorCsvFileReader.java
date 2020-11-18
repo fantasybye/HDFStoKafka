@@ -46,6 +46,7 @@ public class UserBehaviorCsvFileReader implements Supplier<UserBehavior> {
 //            }
             String str;
             if((str = br.readLine())!=null){
+                System.out.println(str);
                 String[] split = str.split(",");
                 userBehavior = new UserBehavior(
                         Long.parseLong(split[0]),
@@ -67,8 +68,8 @@ public class UserBehaviorCsvFileReader implements Supplier<UserBehavior> {
 
     private FileSystem getFiledSystem() throws IOException {
         Configuration configuration = new Configuration();
-        configuration.addResource(new Path("../../../core-site.xml"));
-        configuration.addResource(new Path("../../../hdfs-site.xml"));
+        configuration.addResource(new Path("core-site.xml"));
+        configuration.addResource(new Path("hdfs-site.xml"));
         return FileSystem.get(configuration);
     }
 }
