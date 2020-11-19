@@ -9,6 +9,8 @@ import org.apache.hadoop.fs.Path;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.function.Supplier;
 
@@ -16,6 +18,7 @@ public class WeiboContentCsvFileReader implements Supplier<WeiboContent> {
 
     private final String filePath;
     private final BufferedReader br;
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     public WeiboContentCsvFileReader(String filePath) throws IOException {
 
         this.filePath = filePath;
@@ -50,10 +53,10 @@ public class WeiboContentCsvFileReader implements Supplier<WeiboContent> {
                         split[0],
                         Long.parseLong(split[1]),
                         split[2],
-                        new Date(Long.parseLong(split[3])*1000L)
+                        sdf.parse(split[3])
                 );
             }
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         return weiboContent;

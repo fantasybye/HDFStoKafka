@@ -14,7 +14,7 @@ public class WeiboContent {
     @JsonFormat
     private String content;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date ts;
 
     public WeiboContent(){}
