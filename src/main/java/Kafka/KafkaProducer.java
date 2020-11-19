@@ -13,6 +13,7 @@ public class KafkaProducer<T> implements Consumer<T> {
     private final String topic;
     private final org.apache.kafka.clients.producer.KafkaProducer<byte[], byte[]> producer;
     private final JsonSerializer<T> serializer;
+    private final int interval = 100;
 
     public KafkaProducer(String kafkaTopic, String kafkaBrokers) {
         this.topic = kafkaTopic;
@@ -31,7 +32,7 @@ public class KafkaProducer<T> implements Consumer<T> {
 
         // 通过sleep控制消息的速度，请依据自身kafka配置以及flink服务器配置来调整
         try {
-            Thread.sleep(1000);
+            Thread.sleep(interval);
         }catch(InterruptedException e){
             e.printStackTrace();
         }
