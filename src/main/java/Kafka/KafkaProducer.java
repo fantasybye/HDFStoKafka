@@ -9,10 +9,10 @@ import org.apache.kafka.common.serialization.ByteArraySerializer;
 import java.util.Properties;
 import java.util.function.Consumer;
 
-public class KafkaProducer implements Consumer<UserBehavior> {
+public class KafkaProducer<T> implements Consumer<T> {
     private final String topic;
     private final org.apache.kafka.clients.producer.KafkaProducer<byte[], byte[]> producer;
-    private final JsonSerializer<UserBehavior> serializer;
+    private final JsonSerializer<T> serializer;
 
     public KafkaProducer(String kafkaTopic, String kafkaBrokers) {
         this.topic = kafkaTopic;
@@ -21,7 +21,7 @@ public class KafkaProducer implements Consumer<UserBehavior> {
     }
 
     @Override
-    public void accept(UserBehavior record) {
+    public void accept(T record) {
         // 将对象序列化成byte数组
         byte[] data = serializer.toJSONBytes(record);
         // 封装
