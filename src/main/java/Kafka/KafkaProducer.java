@@ -13,7 +13,7 @@ public class KafkaProducer<T> implements Consumer<T> {
     private final String topic;
     private final org.apache.kafka.clients.producer.KafkaProducer<byte[], byte[]> producer;
     private final JsonSerializer<T> serializer;
-    private final int interval = 100;
+    private final static int interval = 10;
 
     public KafkaProducer(String kafkaTopic, String kafkaBrokers) {
         this.topic = kafkaTopic;

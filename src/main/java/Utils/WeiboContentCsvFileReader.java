@@ -49,14 +49,16 @@ public class WeiboContentCsvFileReader implements Supplier<WeiboContent> {
             if((str = br.readLine())!=null){
                 String[] split = str.split(",");
                 System.out.println(str);
-                weiboContent = new WeiboContent(
-                        split[0],
-                        Long.parseLong(split[1]),
-                        split[2],
-                        sdf.parse(split[3])
-                );
+                if(split.length == 4) {
+                    weiboContent = new WeiboContent(
+                            split[0],
+                            Long.parseLong(split[1]),
+                            split[2],
+                            sdf.parse(split[3])
+                    );
+                }
             }
-        } catch (IOException | ParseException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return weiboContent;
